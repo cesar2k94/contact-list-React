@@ -27,8 +27,8 @@ export const Contacts = () => {
 	const DeleteContact = () => {
 		fetch('https://assets.breatheco.de/apis/fake/contact/' + store.idDelete, {
 			method: "DELETE"
-		});
-		actions.setContacDel();
+		})
+			.then(() => actions.setContacDel());
 		setState({ showModal: false });
 		console.log(store.contacDel, "dentro del delete");
 	}
@@ -45,7 +45,7 @@ export const Contacts = () => {
 					<ul className="list-group pull-down" id="contact-list">
 						{contacts.length > 0 ?
 							contacts.map((contact, index) =>
-									<ContactCard onDelete={() => setState({ showModal: true })} contact={contact} key={index}/>						
+								<ContactCard onDelete={() => setState({ showModal: true })} contact={contact} key={index} />
 							)
 							: <div></div>
 						}
